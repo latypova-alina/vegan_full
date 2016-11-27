@@ -1,0 +1,16 @@
+#content.row
+  .medium-8.columns
+    - categories.each do |category|
+      = link_to category.category_name, foods_path(category_id: category.id), class: "button small"
+    .blog-post#foods
+      - foods.each do |food|
+        .food-item
+          h3 = food.name
+          h6 = food.price
+          img[src = "#{food.image.url}" width="50%" hight="50%"]
+          p = food.description
+        .callout
+            ul.menu.simple
+              li
+                a[href="#"]
+                  | Добавить в корзину

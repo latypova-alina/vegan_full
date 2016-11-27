@@ -1,0 +1,7 @@
+<%= simple_form_for food do |f| %>
+    <%= f.input :name%>
+    <%= f.input :price %>
+    <%= f.input :description %>
+    <%= f.file_field :image %>
+    <%= f.button :submit %>
+<% end %>
