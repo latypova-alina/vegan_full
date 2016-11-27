@@ -11,27 +11,66 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161119195555) do
+ActiveRecord::Schema.define(version: 20161127204533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "devise", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+  create_table "baskets", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "devise", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "devise", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "baskets", ["user_id"], name: "index_baskets_on_user_id", using: :btree
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "category_name"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "food_recipes", force: :cascade do |t|
+    t.integer  "food_id"
+    t.integer  "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "food_recipes", ["food_id"], name: "index_food_recipes_on_food_id", using: :btree
+  add_index "food_recipes", ["recipe_id"], name: "index_food_recipes_on_recipe_id", using: :btree
+
+  create_table "foods", force: :cascade do |t|
+    t.string   "name"
+    t.float    "price"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "image"
+    t.integer  "category_id"
+  end
+
+  add_index "foods", ["category_id"], name: "index_foods_on_category_id", using: :btree
+
+  create_table "recipes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "content"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",               default: "", null: false
+    t.string   "encrypted_password",  default: "", null: false
+    t.integer  "sign_in_count",       default: 0,  null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.datetime "last_sign_in_at"
+    t.datetime "current_sign_in_at"
+    t.datetime "remember_created_at"
+    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end
