@@ -44,6 +44,7 @@ gem "responders"
 gem "rollbar"
 gem "seedbank"
 gem "stackprof"
+gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 
 group :staging, :production do
   gem "newrelic_rpm"
