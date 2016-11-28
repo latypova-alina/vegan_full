@@ -1,0 +1,7 @@
+= simple_form_for food do |f|
+  = f.input :name
+  = f.input :price
+  = f.input :description
+  = f.input :category, priority: [Category.first.category_name], collection: Category.pluck(:category_name)
+  = f.file_field :image
+  = f.button :submit
