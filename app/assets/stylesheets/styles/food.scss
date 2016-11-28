@@ -1,0 +1,22 @@
+ul {
+  list-style-type: none;
+}
+
+.button.secondary.small {
+  border: 1px solid #ccc;
+}
+
+.item-image {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 50%;
+}
+
+.item-image img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
