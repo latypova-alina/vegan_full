@@ -1,14 +1,15 @@
-ul.right
-  - if user_signed_in?
-    li.has-dropdown
+.top-bar-right
+  ul.dropdown.menu (data-dropdown-menu)
+    - if user_signed_in?
+      li
         a = current_user.email
-        ul.dropdown
+        ul.menu.vertical
           li
             = link_to "Edit profile", edit_user_registration_path
           li
             = link_to "Sign out", destroy_user_session_path
           li
             = link_to "Добавить товар", new_food_path
-  - else
-    = active_link_to "Sign in", new_user_session_path, active: :exclusive, wrap_tag: :li
-    = active_link_to "Sign up", new_user_registration_path, active: :exclusive, wrap_tag: :li
+    - else
+      = active_link_to "Sign in", new_user_session_path, active: :exclusive, wrap_tag: :li
+      = active_link_to "Sign up", new_user_registration_path, active: :exclusive, wrap_tag: :li
