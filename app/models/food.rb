@@ -6,4 +6,6 @@ class Food < ActiveRecord::Base
   has_many :food_recipes
   has_many :recipes, through: :food_recipes
 
+  procedure :sort_category
+
 end
