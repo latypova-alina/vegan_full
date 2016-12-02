@@ -7,6 +7,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
+    authorize category
     category.save
     redirect_to :back
   end
