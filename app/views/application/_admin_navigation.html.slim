@@ -1,0 +1,7 @@
+ul.right
+  - if user_signed_in? && current_user.administrator?
+    li.has-dropdown.not-click
+      a.user-dropdown(href = "#") = "Administrator Panel"
+      ul.dropdown
+        li
+          = link_to "Добавить товар", new_food_path
