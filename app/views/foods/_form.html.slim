@@ -2,6 +2,6 @@
   = f.input :name
   = f.input :price
   = f.input :description
-  = f.input :category, priority: [Category.first.category_name], collection: Category.pluck(:category_name)
+  = f.collection_select(:category_id, Category.all, :id, :category_name)
   = f.file_field :image
   = f.button :submit
