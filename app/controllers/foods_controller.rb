@@ -6,6 +6,7 @@ class FoodsController < ApplicationController
   respond_to :html, :js
 
   def create
+    authorize food
     food.save
     redirect_to :back
   end
@@ -15,7 +16,7 @@ class FoodsController < ApplicationController
   end
 
   def food_params
-    params.require(:food).permit(:name, :price, :description, :image, :category)
+    params.require(:food).permit(:name, :price, :description, :image, :category_id)
   end
 
   def index
