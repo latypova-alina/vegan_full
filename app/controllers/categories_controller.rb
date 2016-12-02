@@ -6,6 +6,11 @@ class CategoriesController < ApplicationController
 
   end
 
+  def create
+    category.save
+    redirect_to :back
+  end
+
   def category_params
     params.require(:category).permit(:category_name)
   end
