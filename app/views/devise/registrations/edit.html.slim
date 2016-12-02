@@ -1,6 +1,6 @@
 .row
   .columns
-    h2 = title("Edit #{current_user.full_name}")
+    h2 = title("Edit #{current_user.name}")
 
 .row
   .medium-6.columns
@@ -10,6 +10,7 @@
         html: { method: :put } do |f|
 
       .form-inputs
+        = f.input :name, required: true
         = f.input :email, required: true
         = f.input :password,
             autocomplete: "off",
