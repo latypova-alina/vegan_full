@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202104314) do
+ActiveRecord::Schema.define(version: 20161203180309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,11 +52,22 @@ ActiveRecord::Schema.define(version: 20161202104314) do
 
   add_index "foods", ["category_id"], name: "index_foods_on_category_id", using: :btree
 
-  create_table "recipes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text     "content"
+  create_table "recipe_categories", force: :cascade do |t|
+    t.string   "recipe_category_name"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
+
+  create_table "recipes", force: :cascade do |t|
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.text     "content"
+    t.integer  "recipe_category_id"
+    t.string   "name"
+    t.string   "image"
+  end
+
+  add_index "recipes", ["recipe_category_id"], name: "index_recipes_on_recipe_category_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",               default: "",     null: false
@@ -74,5 +85,23 @@ ActiveRecord::Schema.define(version: 20161202104314) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+
+  # no candidate create_trigger statement could be found, creating an adapter-specific one
+  execute(<<-TRIGGERSQL)
+CREATE OR REPLACE FUNCTION public.category_before_del()
+ RETURNS trigger
+ LANGUAGE plpgsql
+AS $function$
+BEGIN
+if (select count(*) from foods where foods.category_id = OLD.id) > 0
+THEN delete from foods where category_id = OLD.id;
+end if;
+return OLD;
+END;
+$function$
+  TRIGGERSQL
+
+  # no candidate create_trigger statement could be found, creating an adapter-specific one
+  execute("CREATE TRIGGER trigger_category_del_before BEFORE DELETE ON \"categories\" FOR EACH ROW EXECUTE PROCEDURE category_before_del()")
 
 end
