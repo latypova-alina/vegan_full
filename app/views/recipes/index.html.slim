@@ -1,0 +1,23 @@
+#content.row
+  .text-center
+    .large-11.columns
+      - recipe_categories.each do |category|
+        = link_to category.recipe_category_name, recipes_path(recipe_category_id: category.id), class: "button small"
+      .blog-post#foods
+        - recipes.each do |recipe|
+          .small-6.columns
+            .recipe-item
+              h3 = recipe.name
+              .item-image
+                img[src = "#{recipe.image.url}"]
+              p = recipe.content
+              .callout
+                ul.menu.simple
+                  - if user_signed_in? && policy(recipe).destroy?
+                    li
+                      = link_to 'Удалить рецепт', delete_recipe_path(recipe)
+                    li
+                      = link_to 'Изменить рецепт', edit_recipe_path(recipe)
+
+    .large-1.columns
+      = link_to "Еда", foods_path, class: "button secondary small"
