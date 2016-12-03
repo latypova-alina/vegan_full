@@ -18,3 +18,9 @@
                     a.button.secondary.small
                       i.fi-shopping-cart
                         |    Добавить в корзину
+                  - if user_signed_in? && policy(food).destroy?
+                    li
+                      = link_to 'Удалить товар', delete_food_path(food), class: "button secondary tiny"
+
+
+

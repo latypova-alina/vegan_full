@@ -31,4 +31,9 @@ class FoodsController < ApplicationController
     end
   end
 
+  def destroy
+    foods.delete food
+    redirect_to :back
+  end
+
 end
