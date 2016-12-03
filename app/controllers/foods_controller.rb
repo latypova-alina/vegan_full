@@ -3,7 +3,6 @@ class FoodsController < ApplicationController
   expose :foods, -> { Food.all }
   expose :category
   expose :categories, -> { Category.all }
-  respond_to :html, :js
 
   def create
     authorize food
