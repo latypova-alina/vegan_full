@@ -3,7 +3,6 @@ class CategoriesController < ApplicationController
   expose :categories, -> { Category.all }
 
   def index
-
   end
 
   def create
@@ -14,5 +13,10 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:category_name)
+  end
+
+  def destroy
+    categories.delete category
+    redirect_to :back
   end
 end
