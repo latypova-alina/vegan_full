@@ -9,4 +9,10 @@ class User < ActiveRecord::Base
       administrator: "administrator"
   }
 
+  after_create :create_basket
+
+  def create_basket
+    Basket.create(user_id: id)
+  end
+
 end
