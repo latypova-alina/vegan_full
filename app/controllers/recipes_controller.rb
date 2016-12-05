@@ -11,7 +11,8 @@ class RecipesController < ApplicationController
   end
 
   def update
-    respond_with recipe
+    recipe.save
+    redirect_to :recipes
   end
 
   def recipe_params
