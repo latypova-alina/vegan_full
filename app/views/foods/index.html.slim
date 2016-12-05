@@ -16,7 +16,7 @@
                 ul.menu.simple
                   - if food.in_users_basket?(current_user)
                     = link_to "Убрать из корзины", delete_from_basket_path(food),
-                            class:"button secondary small"
+                            class:"button alert small"
                   - else
                     li
                       = link_to '<i class="fi-shopping-cart"></i> Добавить в корзину'.html_safe,
