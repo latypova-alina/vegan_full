@@ -7,7 +7,7 @@
         .small-6.columns
           .recipe-item
             .text-center
-              h3 = recipe.name
+              h3 = truncate(recipe.name, length: 25)
             .item-image
               img[src = "#{recipe.image.url}"]
             p = truncate(recipe.content, length: 300)
