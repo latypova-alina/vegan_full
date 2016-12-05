@@ -16,7 +16,8 @@
                 - if user_signed_in? && policy(recipe).destroy?
                   li
                     = link_to 'Удалить рецепт', delete_recipe_path(recipe)
-                  li                      = link_to 'Изменить рецепт', edit_recipe_path(recipe)
+                  li
+                    = link_to 'Изменить рецепт', edit_recipe_path(recipe)
 
   .large-1.columns
     = link_to "Еда", foods_path, class: "button secondary small"
