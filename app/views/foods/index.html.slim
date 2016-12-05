@@ -14,7 +14,7 @@
               p = food.description
               .callout
                 ul.menu.simple
-                  - if food.in_users_basket?(current_user)
+                  - if user_signed_in? && food.in_users_basket?(current_user)
                     = link_to "Убрать из корзины", delete_from_basket_path(food),
                             class:"button alert small"
                   - else
