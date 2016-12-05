@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   get '/delete_category/:id' => 'categories#destroy', as: 'delete_category'
   get '/delete_recipe_category/:id' => 'recipe_categories#destroy', as: 'delete_recipe_category'
   get '/add_to_basket/:id' => 'baskets#add_to_basket', as: 'add_to_basket'
+  get '/delete_from_basket/:id' => 'baskets#delete_from_basket', as: 'delete_from_basket'
 
 end

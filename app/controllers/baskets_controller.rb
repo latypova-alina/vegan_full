@@ -7,4 +7,9 @@ class BasketsController < ApplicationController
     redirect_to :back
   end
 
+  def delete_from_basket
+    basket.delete food
+    redirect_to :back
+  end
+
 end
