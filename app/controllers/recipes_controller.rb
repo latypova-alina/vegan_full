@@ -3,6 +3,7 @@ class RecipesController < ApplicationController
   expose :recipes, -> { Recipe.all }
   expose :recipe_category
   expose :recipe_categories, -> { RecipeCategory.all }
+  respond_to :html, :xml, :json
 
   def create
     authorize recipe
@@ -11,8 +12,11 @@ class RecipesController < ApplicationController
   end
 
   def update
-    recipe.save
-    redirect_to :recipes
+    if recipe.update(recipe_params)
+      redirect_to :recipes
+    else
+      render :edit
+    end
   end
 
   def recipe_params
