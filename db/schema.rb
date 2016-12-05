@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161203180309) do
+ActiveRecord::Schema.define(version: 20161205135137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "basket_foods", force: :cascade do |t|
+    t.integer  "food_id"
+    t.integer  "basket_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "basket_foods", ["basket_id"], name: "index_basket_foods_on_basket_id", using: :btree
+  add_index "basket_foods", ["food_id"], name: "index_basket_foods_on_food_id", using: :btree
 
   create_table "baskets", force: :cascade do |t|
     t.integer  "user_id"
@@ -88,6 +98,21 @@ ActiveRecord::Schema.define(version: 20161203180309) do
 
   # no candidate create_trigger statement could be found, creating an adapter-specific one
   execute(<<-TRIGGERSQL)
+CREATE OR REPLACE FUNCTION public.add_default_image()
+ RETURNS trigger
+ LANGUAGE plpgsql
+AS $function$
+BEGIN
+IF NEW.image IS NULL or New.image = '' THEN
+    NEW.image = 'no_photo.jpg';
+END IF;
+return NEW;
+END;
+$function$
+  TRIGGERSQL
+
+  # no candidate create_trigger statement could be found, creating an adapter-specific one
+  execute(<<-TRIGGERSQL)
 CREATE OR REPLACE FUNCTION public.category_before_del()
  RETURNS trigger
  LANGUAGE plpgsql
@@ -100,6 +125,9 @@ return OLD;
 END;
 $function$
   TRIGGERSQL
+
+  # no candidate create_trigger statement could be found, creating an adapter-specific one
+  execute("CREATE TRIGGER default_image BEFORE INSERT OR UPDATE ON \"recipes\" FOR EACH ROW EXECUTE PROCEDURE add_default_image()")
 
   # no candidate create_trigger statement could be found, creating an adapter-specific one
   execute("CREATE TRIGGER trigger_category_del_before BEFORE DELETE ON \"categories\" FOR EACH ROW EXECUTE PROCEDURE category_before_del()")
