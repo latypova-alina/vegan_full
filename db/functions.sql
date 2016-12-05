@@ -25,7 +25,7 @@ EXECUTE PROCEDURE category_before_del();
 CREATE FUNCTION add_default_image() RETURNS trigger AS '
 BEGIN
 IF NEW.image IS NULL or New.image = '''' THEN
-    NEW.image = ''http://wpapers.ru/wallpapers/animals/Cats/11027/PREV_%D0%A3%D0%B4%D0%B8%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%BA%D0%BE%D1%82.jpg'';
+    NEW.image = ''no_photo.jpg'';
 END IF;
 return NEW;
 END;
@@ -34,6 +34,5 @@ END;
 CREATE TRIGGER default_image
 BEFORE INSERT ON recipes FOR EACH ROW
 EXECUTE PROCEDURE add_default_image()
-
 
 
