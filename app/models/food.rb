@@ -10,4 +10,8 @@ class Food < ActiveRecord::Base
 
   procedure :sort_category
 
+  def in_users_basket?(user)
+    user.basket.foods.exists?(id)
+  end
+
 end

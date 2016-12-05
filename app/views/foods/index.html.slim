@@ -14,9 +14,14 @@
               p = food.description
               .callout
                 ul.menu.simple
-                  li
-                    = link_to '<i class="fi-shopping-cart"></i> Добавить в корзину'.html_safe, add_to_basket_path(food),
+                  - if food.in_users_basket?(current_user)
+                    = link_to "Убрать из корзины", delete_from_basket_path(food),
                             class:"button secondary small"
+                  - else
+                    li
+                      = link_to '<i class="fi-shopping-cart"></i> Добавить в корзину'.html_safe,
+                              add_to_basket_path(food),
+                              class:"button secondary small"
                   - if user_signed_in? && policy(food).destroy?
                     li
                       = link_to 'Удалить продукт', delete_recipe_path(food)
