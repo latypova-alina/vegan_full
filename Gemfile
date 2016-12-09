@@ -45,8 +45,6 @@ gem "rollbar"
 gem "seedbank"
 gem "stackprof"
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
-gem 'hairtrigger'
-gem "squirm_rails", require: "squirm/rails"
 
 group :staging, :production do
   gem "newrelic_rpm"

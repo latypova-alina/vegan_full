@@ -22,15 +22,7 @@ class FoodsController < ApplicationController
   end
 
   def index
-    #self.foods = foods.where(category_id: params[:category_id]) if params[:category_id]
-    if params[:category_id]
-      foods_hashes = Food.sort_category(params[:category_id])
-      foods = []
-      foods_hashes.each do |food_id|
-        foods << Food.find(food_id["sort_category"])
-      end
-      self.foods = foods
-    end
+    self.foods = foods.where(category_id: params[:category_id]) if params[:category_id]
   end
 
   def destroy
