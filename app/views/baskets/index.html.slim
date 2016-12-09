@@ -1,3 +1,13 @@
 .row
   - foods.each do |food|
-    h4 = food.name
+    .panel
+      .row
+        .small-4.columns
+          h4 = food.name
+          img[src = "#{food.image.url}"]
+        .small-5.columns
+          p = food.description
+        .small-3.columns
+          = link_to "Убрать из корзины", delete_from_basket_path(food),
+                  class: "button alert small"
+
