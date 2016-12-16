@@ -8,8 +8,6 @@ class Food < ActiveRecord::Base
   has_many :basket_foods
   has_many :baskets, through: :basket_foods
 
-  procedure :sort_category
-
   def in_users_basket?(user)
     user.basket.foods.exists?(id)
   end
