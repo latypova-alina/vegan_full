@@ -1,34 +1,30 @@
-#content.row
-  .text-center
-    .large-11.columns
-      - categories.each do |category|
-        = link_to category.category_name, foods_path(category_id: category.id), class: "button small"
-      .blog-post#foods
-        - foods.each do |food|
-          .small-6.columns
-            .food-item
-              h3 = food.name
-              h6 = food.price
-              .item-image
-                img[src = "#{food.image.url}"]
-              p = food.description
-              .callout
-                ul.menu.simple
-                  - if user_signed_in?
-                    - if food.in_users_basket?(current_user)
-                      = link_to "Убрать из корзины", delete_from_basket_path(food),
-                              class:"button alert small"
-                    - else
-                      li
-                        = link_to '<i class="fi-shopping-cart"></i> Добавить в корзину'.html_safe,
-                                add_to_basket_path(food),
-                                class:"button secondary small"
-                    - if policy(food).destroy?
-                      li
-                        = link_to 'Удалить продукт', delete_recipe_path(food)
-                      li
-                        = link_to 'Изменить продукт', edit_recipe_path(food)
-    .large-1.columns
-      = link_to "Корзина", baskets_path, class: "button secondary small"
+.text-center
+  - categories.each do |category|
+    = link_to category.category_name, foods_path(category_id: category.id), class: "button small"
+  .blog-post#foods
+    - foods.each do |food|
+      .small-6.columns
+        .food-item
+          h3 = food.name
+          h6 = food.price
+          .item-image
+            img[src = "#{food.image.url}"]
+          p = food.description
+          .callout
+            ul.menu.simple
+              - if user_signed_in?
+                - if food.in_users_basket?(current_user)
+                  = link_to "Убрать из корзины", delete_from_basket_path(food),
+                          class:"button alert small"
+                - else
+                  li
+                     = link_to '<i class="fi-shopping-cart"></i> Добавить в корзину'.html_safe,
+                            add_to_basket_path(food),
+                             class:"button secondary small"
+                - if policy(food).destroy?
+                  li
+                    = link_to 'Удалить продукт', delete_recipe_path(food)
+                  li
+                    = link_to 'Изменить продукт', edit_recipe_path(food)
 
 
