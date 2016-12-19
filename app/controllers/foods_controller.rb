@@ -15,7 +15,8 @@ class FoodsController < ApplicationController
       redirect_to :foods
     else
       render :edit
-    end  end
+    end
+  end
 
   def food_params
     params.require(:food).permit(:name, :price, :description, :image, :category_id)
