@@ -5,9 +5,9 @@
     .small-6.columns
       .recipe-item
         .text-center
-          h3 = truncate(recipe.name, length: 25)
-          a.show_full data-object-id="#{recipe.id}" = truncate(recipe.name, length: 25)
+          a.recipe_name data-object-id="#{recipe.id}" = truncate(recipe.name, length: 40)
         .modal_form[id="#{recipe.id}"]
+          h3 = recipe.name
           = simple_format(recipe.content)
           a#modal_close X
         #overlay
