@@ -6,20 +6,19 @@
       .recipe-item
         .text-center
           h3 = truncate(recipe.name, length: 25)
-          a[data-object-id="#{recipe.id}"  href="#"] = truncate(recipe.name, length: 25)
+          a.show_full data-object-id="#{recipe.id}" = truncate(recipe.name, length: 25)
         .modal_form[id="#{recipe.id}"]
-          = recipe.content
+          = simple_format(recipe.content)
           a#modal_close X
         #overlay
         .item-image
            img[src = "#{recipe.image.url}"]
-        p = truncate(recipe.content, length: 300)
-         .callout
-           ul.menu.simple
-             - if user_signed_in? && policy(recipe).destroy?
-               li
-                 = link_to 'Удалить рецепт', delete_recipe_path(recipe)
-               li
-                 = link_to 'Изменить рецепт', edit_recipe_path(recipe)
-               li
-                 a ♥ tasty
+        .callout
+          ul.menu.simple
+            - if user_signed_in? && policy(recipe).destroy?
+              li
+                = link_to 'Удалить рецепт', delete_recipe_path(recipe)
+              li
+                = link_to 'Изменить рецепт', edit_recipe_path(recipe)
+              li
+               a ♥ Вкусно
