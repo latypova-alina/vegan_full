@@ -1,5 +1,5 @@
 $(document).ready ->
-  $('a.show_full').click (event) ->
+  $('a.recipe_name').click (event) ->
     id = $(this).data("object-id")
     event.preventDefault()
     $('#overlay').fadeIn 400, ->
