@@ -12,4 +12,8 @@ html lang="en"
   body
     = render "navigation"
     = render "header"
-    = yield
+    .row
+      .large-11.columns
+        = yield
+      .large-1.columns
+        = render "menu"
