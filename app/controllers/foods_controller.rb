@@ -19,7 +19,7 @@ class FoodsController < ApplicationController
   end
 
   def food_params
-    params.require(:food).permit(:name, :price, :description, :image, :category_id)
+    params.require(:food).permit(:name, :price, :description, :image, :remote_image_url, :category_id)
   end
 
   def index

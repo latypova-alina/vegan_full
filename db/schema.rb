@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205135137) do
+ActiveRecord::Schema.define(version: 20161220171047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,10 +54,11 @@ ActiveRecord::Schema.define(version: 20161205135137) do
     t.string   "name"
     t.float    "price"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "image"
     t.integer  "category_id"
+    t.string   "remote_image_url"
   end
 
   add_index "foods", ["category_id"], name: "index_foods_on_category_id", using: :btree
@@ -95,41 +96,5 @@ ActiveRecord::Schema.define(version: 20161205135137) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-
-  # no candidate create_trigger statement could be found, creating an adapter-specific one
-  execute(<<-TRIGGERSQL)
-CREATE OR REPLACE FUNCTION public.add_default_image()
- RETURNS trigger
- LANGUAGE plpgsql
-AS $function$
-BEGIN
-IF NEW.image IS NULL or New.image = '' THEN
-    NEW.image = 'no_photo.jpg';
-END IF;
-return NEW;
-END;
-$function$
-  TRIGGERSQL
-
-  # no candidate create_trigger statement could be found, creating an adapter-specific one
-  execute(<<-TRIGGERSQL)
-CREATE OR REPLACE FUNCTION public.category_before_del()
- RETURNS trigger
- LANGUAGE plpgsql
-AS $function$
-BEGIN
-if (select count(*) from foods where foods.category_id = OLD.id) > 0
-THEN delete from foods where category_id = OLD.id;
-end if;
-return OLD;
-END;
-$function$
-  TRIGGERSQL
-
-  # no candidate create_trigger statement could be found, creating an adapter-specific one
-  execute("CREATE TRIGGER default_image BEFORE INSERT OR UPDATE ON \"recipes\" FOR EACH ROW EXECUTE PROCEDURE add_default_image()")
-
-  # no candidate create_trigger statement could be found, creating an adapter-specific one
-  execute("CREATE TRIGGER trigger_category_del_before BEFORE DELETE ON \"categories\" FOR EACH ROW EXECUTE PROCEDURE category_before_del()")
 
 end

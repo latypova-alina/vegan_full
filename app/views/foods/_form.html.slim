@@ -3,5 +3,6 @@
   = f.input :price
   = f.input :description
   = f.collection_select(:category_id, Category.all, :id, :category_name)
+  = f.text_field :remote_image_url
   = f.file_field :image
   = f.button :submit
