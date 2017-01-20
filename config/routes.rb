@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :recipes
   resources :recipe_categories
   resources :baskets
+  resources :likes
   root to: "foods#index"
+  get '/liked_recipe/:id' => 'likes#like_recipe', as: 'like_recipe'
   get '/delete_food/:id' => 'foods#destroy', as: 'delete_food'
   get '/delete_recipe/:id' => 'recipes#destroy', as: 'delete_recipe'
   get '/delete_category/:id' => 'categories#destroy', as: 'delete_category'
