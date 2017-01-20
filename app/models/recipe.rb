@@ -4,5 +4,8 @@ class Recipe < ActiveRecord::Base
   has_many :food_recipes
   has_many :foods, through: :food_recipes
   belongs_to :recipe_category
+  has_many :likes
+  belongs_to :user
+  has_many :liking_users, through: :likes, source: :user
 
 end

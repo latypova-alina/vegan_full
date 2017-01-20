@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
       administrator: "administrator"
   }
 
+  has_many :recipes
+  has_many :likes
+  has_many :liked_recipes, through: :likes, source: :recipe
   after_create :create_basket
 
   def create_basket
