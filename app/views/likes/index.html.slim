@@ -1,0 +1,17 @@
+.blog-post#recipes
+  - recipes.each do |recipe|
+    .small-6.columns
+      .recipe-item
+        .text-center
+          a.recipe_name data-object-id="#{recipe.id}" = truncate(recipe.name, length: 40)
+        .modal_form[id="#{recipe.id}"]
+          h3 = recipe.name
+          = simple_format(recipe.content)
+          a#modal_close X
+        #overlay
+        .item-image
+          img[src = "#{recipe.image.url}"]
+        .callout
+          ul.right
+            li
+              = link_to 'Уже не хочу ☹', dislike_recipe_path(recipe)
