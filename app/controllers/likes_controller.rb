@@ -8,7 +8,6 @@ class LikesController < ApplicationController
 
   def dislike_recipe
     current_user.liked_recipes.delete(recipe)
-    redirect_to :back
   end
 
 end

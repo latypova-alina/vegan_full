@@ -1,6 +1,6 @@
 .blog-post#recipes
   - recipes.each do |recipe|
-    .small-6.columns
+    .small-6.columns[id="column_#{recipe.id}"]
       .recipe-item
         .text-center
           a.recipe_name data-object-id="#{recipe.id}" = truncate(recipe.name, length: 40)
@@ -14,4 +14,4 @@
         .callout
           ul.right
             li
-              = link_to 'Уже не хочу ☹', dislike_recipe_path(recipe)
+              a.dislike_recipe data-object-id="#{recipe.id}" = 'Уже не хочу ☹'
