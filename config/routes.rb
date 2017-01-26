@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :baskets
   resources :likes
   root to: "foods#index"
+  get '/dislike_recipe/:id' => 'likes#dislike_recipe', as: 'dislike_recipe'
   get '/liked_recipe/:id' => 'likes#like_recipe', as: 'like_recipe'
   get '/delete_food/:id' => 'foods#destroy', as: 'delete_food'
   get '/delete_recipe/:id' => 'recipes#destroy', as: 'delete_recipe'
