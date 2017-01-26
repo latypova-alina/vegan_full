@@ -15,8 +15,8 @@
            img[src = "#{recipe.image.url}"]
         .callout
           ul.right
-            li
-              = link_to 'Вкусно ♥', like_recipe_path(recipe)
+            li#like
+              = link_to 'Хочу ♥', like_recipe_path(recipe)
           ul.menu.simple
             - if user_signed_in? && policy(recipe).destroy?
               li
