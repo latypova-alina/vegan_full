@@ -4,7 +4,6 @@ class LikesController < ApplicationController
 
   def like_recipe
     current_user.liked_recipes << recipe
-    redirect_to :back
   end
 
   def dislike_recipe

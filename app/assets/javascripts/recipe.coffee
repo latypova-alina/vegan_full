@@ -1,4 +1,8 @@
 $(document).ready ->
+  $('a.like_recipe').click ->
+    id = $(this).data("object-id")
+    $.ajax('/liked_recipe/' + id)
+
   $('a.recipe_name').click (event) ->
     id = $(this).data("object-id")
     event.preventDefault()
@@ -20,3 +24,5 @@ $(document).ready ->
       return
     return
   return
+
+
