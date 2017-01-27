@@ -3,4 +3,5 @@
   = f.input_field :content, :cols => "10", :rows => "10"
   = f.collection_select(:recipe_category_id, RecipeCategory.all, :id, :recipe_category_name)
   = f.file_field :image
+  = f.text_field :remote_image_url
   = f.button :submit
