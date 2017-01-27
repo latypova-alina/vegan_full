@@ -16,7 +16,10 @@
         .callout
           ul.right
             li
-              a.like_recipe data-object-id="#{recipe.id}" = 'Хочу ♥'
+              - if recipe.liked?(current_user)
+                a.dislike_recipe data-object-id="#{recipe.id}" = 'Уже не хочу ☹'
+              - else
+                a.like_recipe data-object-id="#{recipe.id}" = 'Хочу ♥'
           ul.menu.simple
             - if user_signed_in? && policy(recipe).destroy?
               li
