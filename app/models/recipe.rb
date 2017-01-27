@@ -8,4 +8,8 @@ class Recipe < ActiveRecord::Base
   belongs_to :user
   has_many :liking_users, through: :likes, source: :user
 
+  def liked?(user)
+    user.liked_recipes.exists?(id)
+  end
+
 end
