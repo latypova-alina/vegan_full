@@ -2,6 +2,12 @@ $(document).ready ->
   $('a.like_recipe').click ->
     id = $(this).data("object-id")
     $.ajax('/liked_recipe/' + id)
+    location.reload()
+
+  $('a.dislike_recipe').click ->
+    id = $(this).data("object-id")
+    $.ajax('/dislike_recipe/' + id)
+    location.reload()
 
   $('a.recipe_name').click (event) ->
     id = $(this).data("object-id")
