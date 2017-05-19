@@ -1,6 +1,7 @@
 .text-center
-  - categories.each do |category|
-    = link_to category.category_name, foods_path(category_id: category.id), class: "button small"
+  .category_panel
+    - categories.each do |category|
+      = link_to category.category_name, foods_path(category_id: category.id), class: "button small categories"
   .blog-post#foods
     - foods.each do |food|
       .small-6.columns

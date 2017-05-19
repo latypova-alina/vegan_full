@@ -1,3 +1,4 @@
 - if user_signed_in?
-  = link_to "Корзина", baskets_path, class: "button secondary small"
-  = link_to "Хочу", likes_path, class: "button secondary small"
+  .menu
+    = link_to "<i class='fi-shopping-cart menu'></i>".html_safe, baskets_path, class: "button secondary small menu"
+    = link_to "<i class='fi-heart menu'></i>".html_safe, likes_path, class: "button secondary small menu"
