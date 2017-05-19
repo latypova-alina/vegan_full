@@ -51,6 +51,12 @@ group :staging, :production do
   gem "rails_stdout_logging"
 end
 
+group :development do
+  gem 'sunspot_solr'
+  gem 'sunspot_rails', github: 'sunspot/sunspot', branch: 'master'
+end
+
+
 group :test do
   gem "capybara"
   gem "capybara-webkit"
@@ -60,7 +66,7 @@ group :test do
   gem "formulaic"
   gem "launchy"
   gem "rspec-its"
-  gem "shoulda-matchers"
+  gem "shoulda-matchers", require: false
   gem "webmock", require: false
 end
 
