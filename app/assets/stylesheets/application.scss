@@ -41,9 +41,16 @@
 }
 
 body{
-  background-color: #CCCCCC;
+  background-color: #676767;
 }
 
+.under-links{
+  color: chartreuse;
+}
+
+a.like_recipe, a.dislike_recipe{
+  color: chartreuse;
+}
 // Inbox
 // The inbox allows developers, and those not actively working on the CSS,
 // to quickly add styles that are easily seen by the maintainer of the file.
