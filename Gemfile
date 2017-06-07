@@ -45,6 +45,8 @@ gem "rollbar"
 gem "seedbank"
 gem "stackprof"
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
+gem "fog-aws"
+gem 'carrierwave_direct'
 
 group :staging, :production do
   gem "newrelic_rpm"
@@ -54,6 +56,7 @@ end
 group :development do
   gem 'sunspot_solr'
   gem 'sunspot_rails', github: 'sunspot/sunspot', branch: 'master'
+  gem 'figaro'
 end
 
 
