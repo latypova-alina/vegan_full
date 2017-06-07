@@ -24,8 +24,8 @@
                              class:"button secondary small"
                 - if policy(food).destroy?
                   li
-                    = link_to 'Удалить продукт', delete_food_path(food)
+                    = link_to 'Удалить продукт', delete_food_path(food), class:"under-links"
                   li
-                    = link_to 'Изменить продукт', edit_food_path(food)
+                    = link_to 'Изменить продукт', edit_food_path(food), class:"under-links"
 
 
