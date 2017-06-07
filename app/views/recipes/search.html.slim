@@ -22,6 +22,6 @@
             ul.menu.simple
               - if policy(recipe).destroy?
                 li
-                  = link_to 'Удалить рецепт', delete_recipe_path(recipe)
+                  = link_to 'Удалить рецепт', delete_recipe_path(recipe), class:"under-links"
                 li
-                  = link_to 'Изменить рецепт', edit_recipe_path(recipe)
+                  = link_to 'Изменить рецепт', edit_recipe_path(recipe), class:"under-links"
