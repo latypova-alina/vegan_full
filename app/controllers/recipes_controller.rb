@@ -25,10 +25,21 @@ class RecipesController < ApplicationController
 
   def index
     self.recipes = recipes.where(recipe_category_id: params[:recipe_category_id]) if params[:recipe_category_id]
+    self.search if params[:search]
   end
 
   def destroy
     recipes.delete recipe
     redirect_to :back
   end
+
+  def search
+    @search = Recipe.search do
+      fulltext params[:search]
+    end
+
+    render :search
+  end
+
+
 end

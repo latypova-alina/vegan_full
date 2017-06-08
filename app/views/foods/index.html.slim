@@ -1,6 +1,7 @@
 .text-center
-  - categories.each do |category|
-    = link_to category.category_name, foods_path(category_id: category.id), class: "button small"
+  .category_panel
+    - categories.each do |category|
+      = link_to category.category_name, foods_path(category_id: category.id), class: "button small categories"
   .blog-post#foods
     - foods.each do |food|
       .small-6.columns
@@ -23,8 +24,8 @@
                              class:"button secondary small"
                 - if policy(food).destroy?
                   li
-                    = link_to 'Удалить продукт', delete_food_path(food)
+                    = link_to 'Удалить продукт', delete_food_path(food), class:"under-links"
                   li
-                    = link_to 'Изменить продукт', edit_food_path(food)
+                    = link_to 'Изменить продукт', edit_food_path(food), class:"under-links"
 
 

@@ -1,4 +1,7 @@
 class Recipe < ActiveRecord::Base
+  searchable do
+    text :name, :content
+  end
   mount_uploader :image, RecipeImageUploader
 
   has_many :food_recipes
@@ -11,5 +14,7 @@ class Recipe < ActiveRecord::Base
   def liked?(user)
     user.liked_recipes.exists?(id)
   end
+
+
 
 end

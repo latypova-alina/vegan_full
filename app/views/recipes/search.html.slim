@@ -1,8 +1,5 @@
-.category_panel
-  - recipe_categories.each do |category|
-    = link_to category.recipe_category_name, recipes_path(recipe_category_id: category.id), class: "button small categories"
 .blog-post#recipes
-  - recipes.each do |recipe|
+  - @search.each_hit_with_result do |hit, recipe|
     .small-6.columns
       .recipe-item
         .text-center
@@ -13,7 +10,7 @@
           a#modal_close X
         #overlay
         .item-image
-           img[src = "#{recipe.image.url}"]
+          img[src = "#{recipe.image.url}"]
         .callout
           - if user_signed_in?
             ul.right
@@ -25,6 +22,6 @@
             ul.menu.simple
               - if policy(recipe).destroy?
                 li
-                  = link_to 'Удалить рецепт', delete_recipe_path(recipe),class:"under-links"
+                  = link_to 'Удалить рецепт', delete_recipe_path(recipe), class:"under-links"
                 li
-                  = link_to 'Изменить рецепт', edit_recipe_path(recipe),class:"under-links"
+                  = link_to 'Изменить рецепт', edit_recipe_path(recipe), class:"under-links"
