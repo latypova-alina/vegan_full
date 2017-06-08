@@ -1,7 +1,6 @@
 GIT
   remote: git://github.com/sunspot/sunspot.git
   revision: eb1591d5fd90bd31d2887ca60246296556ce29e3
-  branch: master
   specs:
     sunspot (2.2.7)
       pr_geohash (~> 1.0)
