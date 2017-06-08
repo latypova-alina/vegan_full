@@ -55,7 +55,7 @@ end
 
 group :development do
   gem 'sunspot_solr'
-  gem 'sunspot_rails', github: 'sunspot/sunspot', branch: 'master'
+  gem 'sunspot_rails', github: 'sunspot/sunspot'
   gem 'figaro'
 end
 
