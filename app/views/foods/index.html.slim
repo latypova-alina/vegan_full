@@ -10,7 +10,7 @@
           h6 = food.price
           .item-image
             img[src = "#{food.image.url}"]
-          p = food.description
+          p = truncate(food.description, length: 50)
           .callout
             ul.menu.simple
               - if user_signed_in?
