@@ -6,8 +6,15 @@
     - foods.each do |food|
       .small-6.columns
         .food-item
-          h3 = food.name
+          .text-center
+            a.food_name data-object-id="#{food.id}" = truncate(food.name, length: 40)
           h6 = food.price
+          .modal_form[id="#{food.id}"]
+            h3 = food.name
+            = simple_format(food.description)
+            img[src = "#{food.image.url}"]
+            a#modal_close X
+          #overlay
           .item-image
             img[src = "#{food.image.url}"]
           p = truncate(food.description, length: 50)
