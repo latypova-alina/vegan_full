@@ -51,11 +51,11 @@ gem 'carrierwave_direct'
 group :staging, :production do
   gem "newrelic_rpm"
   gem "rails_stdout_logging"
+  gem 'sunspot_solr'
+  gem 'sunspot_rails', github: 'sunspot/sunspot'
 end
 
 group :development do
-  gem 'sunspot_solr'
-  gem 'sunspot_rails', github: 'sunspot/sunspot'
   gem 'figaro'
 end
 
