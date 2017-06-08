@@ -1,12 +1,11 @@
 production:
   solr:
-    hostname: localhost
+    hostname: https://us-east-1.websolr.com
     port: 8983
     log_level: WARNING
-    path: /solr/default
+    path: solr/3a49017b2f85
     # read_timeout: 2
     # open_timeout: 0.5
-
 development:
   solr:
     hostname: localhost
