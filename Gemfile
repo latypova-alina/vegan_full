@@ -57,6 +57,8 @@ end
 
 group :development do
   gem 'figaro'
+  gem 'sunspot_solr'
+  gem 'sunspot_rails', github: 'sunspot/sunspot'
 end
 
 
