@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :recipe_categories
   resources :baskets
   resources :likes
-  root to: "foods#index"
+  root to: "recipes#index"
   get '/dislike_recipe/:id' => 'likes#dislike_recipe', as: 'dislike_recipe'
   get '/liked_recipe/:id' => 'likes#like_recipe', as: 'like_recipe'
   get '/delete_food/:id' => 'foods#destroy', as: 'delete_food'
@@ -15,5 +15,7 @@ Rails.application.routes.draw do
   get '/delete_recipe_category/:id' => 'recipe_categories#destroy', as: 'delete_recipe_category'
   get '/add_to_basket/:id' => 'baskets#add_to_basket', as: 'add_to_basket'
   get '/delete_from_basket/:id' => 'baskets#delete_from_basket', as: 'delete_from_basket'
+  get '/search' => 'recipes#search', as: 'search_recipes'
+
 
 end

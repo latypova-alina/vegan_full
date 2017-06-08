@@ -45,11 +45,20 @@ gem "rollbar"
 gem "seedbank"
 gem "stackprof"
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
+gem "fog-aws"
+gem 'carrierwave_direct'
 
 group :staging, :production do
   gem "newrelic_rpm"
   gem "rails_stdout_logging"
 end
+
+group :development do
+  gem 'sunspot_solr'
+  gem 'sunspot_rails', github: 'sunspot/sunspot', branch: 'master'
+  gem 'figaro'
+end
+
 
 group :test do
   gem "capybara"
@@ -60,7 +69,7 @@ group :test do
   gem "formulaic"
   gem "launchy"
   gem "rspec-its"
-  gem "shoulda-matchers"
+  gem "shoulda-matchers", require: false
   gem "webmock", require: false
 end
 

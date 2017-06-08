@@ -41,6 +41,51 @@
   display:none;
 }
 a.recipe_name {
-  color: #008000;
+  color: #dfdfdf;
   font-size:20px;
+}
+
+.button.small.categories {
+  background-color: gold;
+  opacity: 0.5;
+  display: table-cell;
+  color: #676767;
+}
+
+.button.small.categories:hover {
+  background-color: chartreuse;
+}
+
+.category_panel{
+  width: 100%;
+  display: table;
+}
+
+#search{
+  position: absolute;
+  width: 80%;
+  background-color: #888888;
+  opacity: 0.8;
+  bottom: 0px;
+}
+
+#submit_search{
+  position: absolute;
+  width: 10%;
+  bottom: 0px;
+  right: 5%;
+  height: 30px;
+  padding-top: 7px;
+  background-color: #262626;
+  opacity: 0.8;
+}
+
+#submit_search:hover{
+  background-color: #444444;
+}
+
+.search_form{
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
 }

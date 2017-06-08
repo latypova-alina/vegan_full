@@ -4,6 +4,53 @@
 @import "foundation-icons";
 @import "styles/*";
 
+.column.column-block.header{
+  background-image: url('../assets/background1.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  height: 300px;
+}
+
+.button.secondary.small.menu{
+  text-align: center;
+  padding-left: 13px;
+  padding-bottom: 1px;
+  padding-top: 1px;
+  border: none;
+  width: 100%;
+}
+
+.column.column-block.header h1{
+  color: #BBBBBB;
+  font-size: 100px;
+  font-family: ZcarFont;
+}
+
+.fi-shopping-cart.menu{
+  font-size: 2rem;
+}
+
+.fi-heart.menu{
+  font-size: 2rem;
+}
+
+@font-face{
+  font-family: ZcarFont;
+  src: url('/assets/ZcarFont.otf')
+}
+
+body{
+  background-color: #676767;
+}
+
+.under-links{
+  color: chartreuse;
+}
+
+a.like_recipe, a.dislike_recipe{
+  color: chartreuse;
+}
 // Inbox
 // The inbox allows developers, and those not actively working on the CSS,
 // to quickly add styles that are easily seen by the maintainer of the file.
