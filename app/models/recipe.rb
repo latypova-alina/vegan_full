@@ -4,6 +4,8 @@ class Recipe < ActiveRecord::Base
   end
   mount_uploader :image, RecipeImageUploader
 
+  validates :name, :content, :presence => true
+
   has_many :food_recipes
   has_many :foods, through: :food_recipes
   belongs_to :recipe_category
