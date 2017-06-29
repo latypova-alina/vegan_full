@@ -1,7 +1,5 @@
 class Food < ActiveRecord::Base
   mount_uploader :image, FoodImageUploader
-
-
   validates :name, :price, :presence => true
 
   belongs_to :category
@@ -13,5 +11,4 @@ class Food < ActiveRecord::Base
   def in_users_basket?(user)
     user.basket.foods.exists?(id)
   end
-
 end

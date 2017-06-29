@@ -1,6 +1,6 @@
 namespace :sunspot do
   namespace :solr do
-    desc 'Start the Solr instance'
+    desc "Start the Solr instance"
     task :start => :environment do
       case RUBY_PLATFORM
         when /w(in)?32$/, /java$/
@@ -16,7 +16,7 @@ namespace :sunspot do
       puts "Successfully started Solr ..."
     end
 
-    desc 'Run the Solr instance in the foreground'
+    desc "Run the Solr instance in the foreground"
     task :run => :environment do
       if defined?(Sunspot::Rails::Server)
         Sunspot::Rails::Server.new.run
@@ -25,7 +25,7 @@ namespace :sunspot do
       end
     end
 
-    desc 'Stop the Solr instance'
+    desc "Stop the Solr instance"
     task :stop => :environment do
       case RUBY_PLATFORM
         when /w(in)?32$/, /java$/

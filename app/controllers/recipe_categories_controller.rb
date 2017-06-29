@@ -1,6 +1,6 @@
 class RecipeCategoriesController < ApplicationController
   expose :recipe_category, attributes: :recipe_category_params
-  expose :recipe_categories, -> {RecipeCategory.all }
+  expose :recipe_categories, -> { RecipeCategory.all }
 
   def index
   end

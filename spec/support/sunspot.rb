@@ -1,5 +1,5 @@
-require 'sunspot/rails'
-require 'net/http'
+require "sunspot/rails"
+require "net/http"
 
 $original_sunspot_session = Sunspot.session
 Sunspot.session = Sunspot::Rails::StubSessionProxy.new($original_sunspot_session)
@@ -21,7 +21,8 @@ module Sunspot
 end
 
 module SunspotTest
-  class TimeOutError < StandardError; end;
+  class TimeOutError < StandardError
+  end
   class << self
 
     attr_writer :solr_startup_timeout
@@ -41,17 +42,16 @@ module SunspotTest
     end
 
     def start_sunspot_server
-      unless solr_running?
-        pid = fork do
-          STDERR.reopen("/dev/null")
-          STDOUT.reopen("/dev/null")
-          server.run
-        end
-
-        at_exit { Process.kill("TERM", pid) }
-
-        wait_until_solr_starts
+      return false if solr_running?
+      pid = fork do
+        STDERR.reopen("/dev/null")
+        STDOUT.reopen("/dev/null")
+        server.run
       end
+
+      at_exit { Process.kill("TERM", pid) }
+
+      wait_until_solr_starts
     end
 
     # Stubs Sunspot calls to Solr server
@@ -64,13 +64,13 @@ module SunspotTest
 
     # Resets Sunspot to call Solr server, opposite of stub
     def unstub
-      if @session_stubbed
-        Sunspot.session = Sunspot.session.original_session
-        @session_stubbed = false
-      end
+      return unless @session_stubbed
+      Sunspot.session = Sunspot.session.original_session
+      @session_stubbed = false
     end
 
     private
+
     def wait_until_solr_starts
       (solr_startup_timeout * 10).times do
         break if solr_running?
@@ -80,13 +80,11 @@ module SunspotTest
     end
 
     def solr_running?
-      begin
-        solr_ping_uri = URI.parse("#{Sunspot.session.config.solr.url}/ping")
-        Net::HTTP.get(solr_ping_uri)
-        true # Solr Running
-      rescue
-        false # Solr Not Running
-      end
+      solr_ping_uri = URI.parse("#{Sunspot.session.config.solr.url}/ping")
+      Net::HTTP.get(solr_ping_uri)
+      true # Solr Running
+    rescue
+      false # Solr Not Running
     end
   end
 end

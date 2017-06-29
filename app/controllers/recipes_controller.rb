@@ -25,7 +25,7 @@ class RecipesController < ApplicationController
 
   def index
     self.recipes = recipes.where(recipe_category_id: params[:recipe_category_id]) if params[:recipe_category_id]
-    self.search if params[:search]
+    search if params[:search]
   end
 
   def destroy
@@ -40,6 +40,4 @@ class RecipesController < ApplicationController
 
     render :search
   end
-
-
 end

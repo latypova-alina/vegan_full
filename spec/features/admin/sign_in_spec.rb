@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 feature "Sign in" do
   let!(:admin) { create :admin }
@@ -6,9 +6,9 @@ feature "Sign in" do
 
   before(:each) do
     visit new_user_session_path
-    fill_in 'Email', with: admin.email
-    fill_in 'Password', with: password
-    click_button 'Sign in'
+    fill_in "Email", with: admin.email
+    fill_in "Password", with: password
+    click_button "Sign in"
   end
 
   admin_links = ["Добавить товар", "Добавить рецепт", "Категории продуктов", "Категории рецептов"]

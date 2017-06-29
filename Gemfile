@@ -2,8 +2,8 @@ source "https://rubygems.org"
 
 ruby "2.3.0"
 
-gem "rails", "4.2.7.1"
 gem "pg"
+gem "rails", "4.2.7.1"
 
 # assets
 gem "autoprefixer-rails"
@@ -15,8 +15,8 @@ gem "premailer-rails"
 gem "sass-rails", "= 5.0.3"
 gem "skim"
 gem "therubyracer", platforms: :ruby
+gem "turbolinks"
 gem "uglifier", ">= 2.7.2"
-gem 'turbolinks'
 
 # views
 gem "active_link_to"
@@ -26,11 +26,14 @@ gem "simple_form"
 gem "slim"
 
 # all other gems
+gem "carrierwave", ">= 1.0.0.rc", "< 2.0"
+gem "carrierwave_direct"
 gem "decent_decoration"
 gem "decent_exposure"
 gem "devise"
 gem "draper"
 gem "flamegraph"
+gem "fog-aws"
 gem "google-analytics-rails"
 gem "health_check"
 gem "interactor"
@@ -44,23 +47,17 @@ gem "responders"
 gem "rollbar"
 gem "seedbank"
 gem "stackprof"
-gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
-gem "fog-aws"
-gem 'carrierwave_direct'
 
 group :staging, :production do
   gem "newrelic_rpm"
   gem "rails_stdout_logging"
-  gem 'sunspot_solr'
-  gem 'sunspot_rails', github: 'sunspot/sunspot'
 end
 
 group :development do
-  gem 'figaro'
-  gem 'sunspot_solr'
-  gem 'sunspot_rails', github: 'sunspot/sunspot'
+  gem "figaro"
+  gem "sunspot_rails"
+  gem "sunspot_solr"
 end
-
 
 group :test do
   gem "capybara"

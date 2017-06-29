@@ -4,7 +4,7 @@ class Recipe < ActiveRecord::Base
   end
   mount_uploader :image, RecipeImageUploader
 
-  validates :name, :content, :presence => true
+  validates :name, :content, presence: true
 
   has_many :food_recipes
   has_many :foods, through: :food_recipes
@@ -16,7 +16,4 @@ class Recipe < ActiveRecord::Base
   def liked?(user)
     user.liked_recipes.exists?(id)
   end
-
-
-
 end

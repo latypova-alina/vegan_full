@@ -30,5 +30,4 @@ class FoodsController < ApplicationController
     foods.delete food
     redirect_to :back
   end
-
 end

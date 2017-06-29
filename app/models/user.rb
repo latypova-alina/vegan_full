@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   has_one :basket, dependent: :destroy
 
   enum role: {
-      user: "user",
-      administrator: "administrator"
+    user: "user",
+    administrator: "administrator"
   }
 
   has_many :recipes
@@ -17,5 +17,4 @@ class User < ActiveRecord::Base
   def create_basket
     Basket.create(user_id: id)
   end
-
 end

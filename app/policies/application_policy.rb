@@ -5,6 +5,4 @@ class ApplicationPolicy
     @user = user
     @object = object
   end
-
-
 end

@@ -1,7 +1,5 @@
-require 'shoulda-matchers'
-require 'sunspot/rails/spec_helper'
-
-
+require "shoulda-matchers"
+require "sunspot/rails/spec_helper"
 require "bundler/setup"
 ::Bundler.require(:default, :test)
 
@@ -10,6 +8,5 @@ require "bundler/setup"
     with.test_framework :rspec
     with.library :active_record
     with.library :active_model
-
   end
 end
