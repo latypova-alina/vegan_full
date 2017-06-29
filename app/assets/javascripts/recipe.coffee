@@ -1,4 +1,9 @@
 $(document).ready ->
+  $('a#delete_recipe').click ->
+    id = $(this).data("object-id")
+    $('#recipe-item' + id).css 'display', 'none'
+    return
+
   $('a.like_recipe').click ->
     id = $(this).data("object-id")
     $.ajax('/liked_recipe/' + id)

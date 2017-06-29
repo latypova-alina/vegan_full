@@ -4,7 +4,7 @@
 .blog-post#recipes
   - recipes.each do |recipe|
     .small-6.columns
-      .recipe-item
+      .recipe-item[id="recipe-item#{recipe.id}"]
         .text-center
           a.recipe_name data-object-id="#{recipe.id}" = truncate(recipe.name, length: 40)
         .modal_form[id="#{recipe.id}"]
@@ -25,6 +25,6 @@
             ul.menu.simple
               - if policy(recipe).destroy?
                 li
-                  = link_to 'Удалить рецепт', delete_recipe_path(recipe),class:"under-links"
+                  a.under-links href="#{recipe_path(recipe)}" data-object-id="#{recipe.id}" id="delete_recipe" data-remote="true" rel="nofollow" Удалить рецепт
                 li
                   = link_to 'Изменить рецепт', edit_recipe_path(recipe),class:"under-links"

@@ -5,7 +5,7 @@
   .blog-post#foods
     - foods.each do |food|
       .small-6.columns
-        .food-item
+        .food-item[id="food-item#{food.id}"]
           .text-center
             a.food_name data-object-id="#{food.id}" = truncate(food.name, length: 40)
           h6 = food.price
@@ -31,7 +31,7 @@
                              class:"button secondary small"
                 - if policy(food).destroy?
                   li
-                    = link_to 'Удалить продукт', delete_food_path(food), class:"under-links"
+                    a.under-links href="#{food_path(food)}" data-object-id="#{food.id}" id="delete_food" data-remote="true" rel="nofollow" Удалить продукт
                   li
                     = link_to 'Изменить продукт', edit_food_path(food), class:"under-links"
 

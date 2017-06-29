@@ -1,4 +1,8 @@
 $(document).ready ->
+  $('a#delete_food').click ->
+    id = $(this).data("object-id")
+    $('#food-item' + id).css 'display', 'none'
+    return
 
   $('a.food_name').click (event) ->
     id = $(this).data("object-id")
@@ -21,3 +25,6 @@ $(document).ready ->
         return
       return
   return
+
+
+
